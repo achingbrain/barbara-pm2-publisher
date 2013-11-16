@@ -5,7 +5,7 @@ var LOG = require("winston"),
 // set up arguments
 config.argv().env().file("config.json");
 
-var bonvoyageClient = container.createAndRegister("seaportClient", bonvoyage.Client, {
+var bonvoyageClient = new bonvoyage.Client({
 	serviceType: config.get("registry:name")
 });
 bonvoyageClient.register({
