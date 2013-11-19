@@ -1,9 +1,10 @@
 var LOG = require("winston"),
 	config = require("nconf"),
-	bonvoyage = require("bonvoyage");
+	bonvoyage = require("bonvoyage"),
+	path = require("path");
 
 // set up arguments
-config.argv().env().file("config.json");
+config.argv().env().file(path.resolve(__dirname, "config.json"));
 
 var bonvoyageClient = new bonvoyage.Client({
 	serviceType: config.get("registry:name")
